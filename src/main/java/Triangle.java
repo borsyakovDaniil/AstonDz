@@ -1,0 +1,12 @@
+public class Triangle {
+    public static double area(double a, double h) {
+        if (a < 0 || h < 0) {
+            throw new IllegalArgumentException("Стороны должны быть положительные");
+        }
+        return (a * h) / 2;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(area(10, 5));
+    }
+}
