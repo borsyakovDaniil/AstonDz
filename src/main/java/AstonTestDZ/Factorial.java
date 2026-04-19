@@ -1,3 +1,5 @@
+package AstonTestDZ;
+
 public class Factorial {
 
     public static int factorial;
@@ -6,7 +8,7 @@ public class Factorial {
         if (n < 0) {
             throw new IllegalArgumentException("Число должно быть >= 0");
         }
-        if (n>12){
+        if (n > 12) {
             throw new IllegalArgumentException("Слишком большое число");
         }
 
