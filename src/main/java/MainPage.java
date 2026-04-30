@@ -1,9 +1,12 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+
+import static java.awt.SystemColor.text;
 
 public class MainPage extends BasePage {
     public MainPage(WebDriver driver) {
@@ -90,6 +93,124 @@ public class MainPage extends BasePage {
     public MainPage next() {
         waitAndClick(buttonNext);
         return this;
+    }
+
+    //Услуги связи
+    private final By phoneNumber = By.cssSelector("input#connection-phone");
+
+    public String checkphoneNumber() {
+        return getAttribute(phoneNumber, "placeholder");
+    }
+
+    private final By summa = By.cssSelector("input#connection-sum");
+
+    public String checkSumma() {
+        return getAttribute(summa, "placeholder");
+    }
+
+    private final By email = By.cssSelector("input#connection-email");
+
+    public String checkEmail() {
+        return getAttribute(email, "placeholder");
+    }
+
+    //кнопка выпадающего списка
+    private final By buttonDropDownList = By.cssSelector("div.select__wrapper button.select__header");
+
+    public MainPage clickButtonDropDownList() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(buttonDropDownList));
+        waitAndClick(buttonDropDownList);
+        return this;
+    }
+
+    //список
+    private final By listDropDown = By.cssSelector("ul.select__list");
+
+
+    //метод для нажатия на кнопку по тексту
+    public MainPage selectByText(String text) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(buttonDropDownList));
+        waitAndClick(buttonDropDownList);
+        By liLocator = By.xpath("//li[contains(@class,'select__item') and .//p[contains(text(),'" + text + "')]]");
+        wait.until(ExpectedConditions.elementToBeClickable(liLocator));
+        waitAndClick(liLocator);
+        return this;
+    }
+
+
+    public MainPage clickButtonByNumber(int number) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(buttonDropDownList));
+        waitAndClick(buttonDropDownList);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(listDropDown));
+        By liLocator = By.cssSelector("li.select__item:nth-child(" + number + ")");
+        wait.until(ExpectedConditions.elementToBeClickable(liLocator));
+        waitAndClick(liLocator);
+        return this;
+    }
+
+    //домашний интернет
+    private final By internetNumberPhone = By.cssSelector("input#internet-phone");
+
+    public String getinternetNumberPhone() {
+        return getAttribute(internetNumberPhone, "placeholder");
+    }
+
+    private final By sumHomeInternet = By.cssSelector("input#internet-sum.total_rub");
+
+    public String getSumHomeInternet() {
+        return getAttribute(sumHomeInternet, "placeholder");
+    }
+
+    private final By emailInternetHome = By.cssSelector("input#internet-email");
+
+    public String getEmailInternetHome() {
+        return getAttribute(emailInternetHome, "placeholder");
+    }
+
+    //рассрочка
+    private final By accountNumber = By.cssSelector("input#score-instalment");
+
+    public String getAccountNumber() {
+        return getAttribute(accountNumber, "placeholder");
+    }
+
+    private final By instalmentSum = By.cssSelector("input#instalment-sum");
+
+    public String getInstalmentSum() {
+        return getAttribute(instalmentSum, "placeholder");
+    }
+
+    private final By emailInstallmentPlan = By.cssSelector("input#instalment-email");
+
+    public String getEmailInstallmentPlan() {
+        return getAttribute(emailInstallmentPlan, "placeholder");
+    }
+
+    //задолженность
+    private final By scoreArrears = By.cssSelector("input#score-arrears");
+
+    public String getScoreArrears() {
+        return getAttribute(scoreArrears, "placeholder");
+    }
+
+    private final By arrearsSum = By.cssSelector("input#arrears-sum");
+
+    public String getArrearsSum() {
+        return getAttribute(arrearsSum, "placeholder");
+    }
+
+    private final By arrearsEmail = By.cssSelector("input#arrears-email");
+
+    public String getArrearsEmail() {
+        return getAttribute(arrearsEmail, "placeholder");
+    }
+    //iframe
+
+// переход в iframe
+    public PaymentFramePage switchToPaymentFrame(){
+        WebElement iframe = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("iframe.payment-widget-iframe")));
+        driver.switchTo().frame(iframe);
+        return new PaymentFramePage(driver);
     }
 }
 

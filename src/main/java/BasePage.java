@@ -40,12 +40,7 @@ public class BasePage {
         element.clear();
         element.sendKeys(text);
     }
-
-    protected void switchToFrame(By locator) {
-        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(locator));
-    }
-
-    protected void switchToDefaultContent() {
-        driver.switchTo().defaultContent();
+    protected String getAttribute(By locator , String placeholder){
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getAttribute(placeholder);
     }
 }
