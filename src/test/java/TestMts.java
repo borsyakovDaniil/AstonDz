@@ -236,7 +236,6 @@ public class TestMts extends BaseTest {
                 .next()
                 .switchToPaymentFrame();
         Assert.assertEquals("error", "100.00 BYN", frame.getSumHeder());
-        driver.switchTo().defaultContent();
     }
 
     @Test
@@ -249,7 +248,6 @@ public class TestMts extends BaseTest {
                 .next()
                 .switchToPaymentFrame();
         Assert.assertEquals("error", "Оплата: Услуги связи Номер:375297777777", frame.getPhoneHeder());
-        driver.switchTo().defaultContent();
     }
 
     @Test
@@ -262,7 +260,6 @@ public class TestMts extends BaseTest {
                 .next()
                 .switchToPaymentFrame();
         Assert.assertEquals("error", "Номер карты", frame.getNumberCard());
-        driver.switchTo().defaultContent();
     }
 
     @Test
@@ -275,7 +272,6 @@ public class TestMts extends BaseTest {
                 .next()
                 .switchToPaymentFrame();
         Assert.assertEquals("error", "Срок действия", frame.getValidityPeriod());
-        driver.switchTo().defaultContent();
     }
 
     @Test
@@ -288,7 +284,6 @@ public class TestMts extends BaseTest {
                 .next()
                 .switchToPaymentFrame();
         Assert.assertEquals("error", "CVC", frame.getCvc());
-        driver.switchTo().defaultContent();
     }
 
     @Test
@@ -301,7 +296,6 @@ public class TestMts extends BaseTest {
                 .next()
                 .switchToPaymentFrame();
         Assert.assertEquals("error", "Имя и фамилия на карте", frame.getFirstNameLastName());
-        driver.switchTo().defaultContent();
     }
 
     @Test
@@ -314,7 +308,6 @@ public class TestMts extends BaseTest {
                 .next()
                 .switchToPaymentFrame();
         Assert.assertTrue("error", frame.cardsBrandsVisible());
-        driver.switchTo().defaultContent();
     }
 
     @Test
@@ -327,7 +320,6 @@ public class TestMts extends BaseTest {
                 .next()
                 .switchToPaymentFrame();
         Assert.assertEquals("error", "Оплатить 100.00 BYN", frame.getButton());
-        driver.switchTo().defaultContent();
     }
 
 }

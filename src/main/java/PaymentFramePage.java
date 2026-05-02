@@ -50,4 +50,5 @@ public class PaymentFramePage extends BasePage {
     public String getButton(){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(button)).getText();
     }
+
 }

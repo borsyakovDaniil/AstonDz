@@ -40,7 +40,8 @@ public class BasePage {
         element.clear();
         element.sendKeys(text);
     }
-    protected String getAttribute(By locator , String placeholder){
+
+    protected String getAttribute(By locator, String placeholder) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getAttribute(placeholder);
     }
 }
