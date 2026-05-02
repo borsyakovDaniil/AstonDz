@@ -11,44 +11,44 @@ public class PaymentFramePage extends BasePage {
         super(driver);
     }
 
-    private final By sumHeder = By.cssSelector("div.pay-description__cost"); //100.00 BYN
-    private final By phoneHeder = By.cssSelector("div.pay-description__text"); //Оплата: Услуги связи Номер:375297777777
-    private final By numberCard = By.cssSelector("#cc-number + label");
-    private final By validityPeriod = By.cssSelector("div.content.ng-tns-c2312288139-4 input.date-input.ng-tns-c2312288139-4.ng-untouched.ng-pristine.ng-invalid + label");
-    private final By cvc = By.cssSelector("div.content.ng-tns-c2312288139-5 label.ng-tns-c2312288139-5.ng-star-inserted");
-    private final By firstNameLastName = By.cssSelector("div.content.ng-tns-c2312288139-3 label.ng-tns-c2312288139-3.ng-star-inserted");
-    private final By cardsBrands = By.cssSelector("div.icons-container.ng-tns-c2312288139-2");
-    private final By button = By.cssSelector("button.colored.disabled");
+    private final By SUM_HEADER = By.cssSelector("div.pay-description__cost"); //100.00 BYN
+    private final By PHONE_HEADER = By.cssSelector("div.pay-description__text"); //Оплата: Услуги связи Номер:375297777777
+    private final By NUMBER_CARD = By.cssSelector("#cc-number + label");
+    private final By VALIDITY_PERIOD = By.cssSelector("div.content.ng-tns-c2312288139-4 input.date-input.ng-tns-c2312288139-4.ng-untouched.ng-pristine.ng-invalid + label");
+    private final By CVC = By.cssSelector("div.content.ng-tns-c2312288139-5 label.ng-tns-c2312288139-5.ng-star-inserted");
+    private final By FIRST_NAME_LAST_NAME = By.cssSelector("div.content.ng-tns-c2312288139-3 label.ng-tns-c2312288139-3.ng-star-inserted");
+    private final By CARDS_BRANDS = By.cssSelector("div.icons-container.ng-tns-c2312288139-2");
+    private final By BUTTON = By.cssSelector("button.colored.disabled");
 
     public String getSumHeder() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(sumHeder)).getText();
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(SUM_HEADER)).getText();
     }
 
     public String getPhoneHeder() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(phoneHeder)).getText();
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(PHONE_HEADER)).getText();
     }
 
     public String getNumberCard() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(numberCard)).getText();
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(NUMBER_CARD)).getText();
     }
 
     public String getValidityPeriod() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(validityPeriod)).getText();
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(VALIDITY_PERIOD)).getText();
     }
 
     public String getCvc() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(cvc)).getText();
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(CVC)).getText();
     }
     public String getFirstNameLastName(){
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(firstNameLastName)).getText();
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(FIRST_NAME_LAST_NAME)).getText();
     }
     public boolean cardsBrandsVisible() {
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(cardsBrands));
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(CARDS_BRANDS));
         return driver.findElements(By.cssSelector("div.icons-container.ng-tns-c2312288139-2")).size() > 0;
     }
 
     public String getButton(){
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(button)).getText();
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(BUTTON)).getText();
     }
 
 }
