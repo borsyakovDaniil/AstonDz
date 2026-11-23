@@ -1,38 +1,35 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class MainPage extends BasePage {
+
+    private final By cooki = By.cssSelector("button#cookie-agree");
+    private final By heading = By.cssSelector("#pay-section > div > div > div.col-12.col-xl-8 > section > div > h2");
+    private final By paymentSystems = By.cssSelector("div.pay__partners, footer .partner-list");
+    private final By visa = By.cssSelector("img[alt='Visa'], img[alt='VISA']");
+    private final By visa2 = By.cssSelector("img[alt='Verified By Visa'], img[alt='Visa'], img[alt='VISA']");
+    private final By masterCard = By.cssSelector("img[alt='MasterCard']");
+    private final By masterCardSecureCode = By.cssSelector("img[alt='MasterCard Secure Code'], img[alt='MasterCard']");
+    private final By belCard = By.cssSelector("img[alt='Белкарт'], img[alt='BELKART']");
+    private final By buttonMoreDetailed = By.cssSelector("#pay-section > div > div > div.col-12.col-xl-8 > section > div > a");
+    private final By phone = By.cssSelector("input.phone#connection-phone");
+    private final By sumRub = By.cssSelector("input#connection-sum");
+    private final By buttonNext = By.cssSelector("div.pay__forms form#pay-connection button.button.button__default");
+
     public MainPage(WebDriver driver) {
         super(driver);
     }
 
-
-    //принять куки
-    private final By cooki = By.cssSelector("button#cookie-agree");
-
     public MainPage coockiClic() {
-        waitAndClick(cooki);
+        if (!driver.findElements(cooki).isEmpty()) {
+            waitAndClick(cooki);
+        }
         return this;
     }
-
-    //заголовок
-    private final By heading = By.cssSelector("#pay-section > div > div > div.col-12.col-xl-8 > section > div > h2");
 
     public String getHeading() {
         return waitAndGetText(heading);
     }
-
-    //логотипы платежных систем
-    private final By paymentSystems = By.cssSelector("div.pay__partners");
-    private final By visa = By.cssSelector("div.pay__partners ul li img[alt='Visa'");
-    private final By visa2 = By.cssSelector("div.pay__partners ul li img[alt= 'Verified By Visa'");
-    private final By masterCard = By.cssSelector("div.pay__partners ul li img[alt= 'MasterCard'");
-    private final By masterCardSecureCode = By.cssSelector("div.pay__partners ul li img[alt= 'MasterCard Secure Code'");
-    private final By belCard = By.cssSelector("div.pay__partners ul li img[alt= 'Белкарт'");
 
     public boolean checkPaymentSystems() {
         return waitForElementIsVisible(paymentSystems);
@@ -58,10 +55,6 @@ public class MainPage extends BasePage {
         return waitForElementIsVisible(belCard);
     }
 
-
-    //ссылка подробнее о сервисе
-    private final By buttonMoreDetailed = By.cssSelector("#pay-section > div > div > div.col-12.col-xl-8 > section > div > a");
-
     public MainPage clickButtonMoreDetailed() {
         waitAndClick(buttonMoreDetailed);
         return this;
@@ -70,12 +63,6 @@ public class MainPage extends BasePage {
     public String getCurrentUrl() {
         return driver.getCurrentUrl();
     }
-
-    //локаторы для проверки кнопки продолжить
-
-    private final By phone = By.cssSelector("input.phone#connection-phone");
-    private final By sumRub = By.cssSelector("input#connection-sum");
-    private final By buttonNext = By.cssSelector("div.pay__forms form#pay-connection button.button.button__default ");
 
     public MainPage numberPhone(String phone) {
         waitClearAndType(this.phone, phone);
@@ -92,4 +79,3 @@ public class MainPage extends BasePage {
         return this;
     }
 }
-
